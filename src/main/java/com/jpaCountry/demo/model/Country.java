@@ -1,6 +1,6 @@
 package com.jpaCountry.demo.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.swing.plaf.synth.Region;
-
 
 
 @Entity 
@@ -21,9 +19,9 @@ public class Country {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(nullable=true)
+	@Column(nullable=true, unique=true)
 	private String country_code2;
-	@Column(nullable=true)
+	@Column(nullable=true, unique=true)
 	private String country_code3;
 	
 	private String name;
@@ -33,7 +31,9 @@ public class Country {
 	
 	@ManyToOne 
 	@JoinColumn(name="region_id", nullable=true) //Foreign Key
-	private Region region;
+    private Regione region;
+	
+
 
 	public Integer getId() {
 		return id;
@@ -83,11 +83,11 @@ public class Country {
 		this.area = area;
 	}
 
-	public Region getRegion() {
+	public Regione getRegion() {
 		return region;
 	}
 
-	public void setRegion(Region region) {
+	public void setRegion(Regione region) {
 		this.region = region;
 	}
 
@@ -100,10 +100,4 @@ public class Country {
 
 
 
-
-
-	
 }
-
-
-

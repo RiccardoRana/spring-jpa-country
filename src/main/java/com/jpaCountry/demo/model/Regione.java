@@ -10,12 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="regions")
-public class Region {
+public class Regione {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +27,11 @@ public class Region {
 	
 	@ManyToOne
 	@JoinColumn(name="continent_id", nullable=true) //Foreign Key
+	@OrderBy("continent_id")
 	private Continent continent;
 	
 	@OneToMany(mappedBy="region")
+	@OrderBy("country_id")
 	private List<Country> countries;
 
 	public Integer getId() {

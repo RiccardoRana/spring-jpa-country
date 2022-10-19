@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +22,8 @@ public class Continent {
 	private String nameContinent;
 	
 	@OneToMany(mappedBy="continent")
-	private List<Region> regions;
+	@OrderBy("region_id")
+	private List<Regione> regions;
 
 	public Integer getId() {
 		return id;
@@ -39,11 +41,11 @@ public class Continent {
 		this.nameContinent = nameContinent;
 	}
 
-	public List<Region> getRegions() {
+	public List<Regione> getRegions() {
 		return regions;
 	}
 
-	public void setRegions(List<Region> regions) {
+	public void setRegions(List<Regione> regions) {
 		this.regions = regions;
 	} 
 
