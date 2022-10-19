@@ -29,7 +29,39 @@ public class Region {
 	private Continent continent;
 	
 	@OneToMany(mappedBy="region")
-	private List<Country> countries; 
+	private List<Country> countries;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNameRegion() {
+		return nameRegion;
+	}
+
+	public void setNameRegion(String nameRegion) {
+		this.nameRegion = nameRegion;
+	}
+
+	public Continent getContinent() {
+		return continent;
+	}
+
+	public void setContinent(Continent continent) {
+		this.continent = continent;
+	}
+
+	public List<Country> getCountries() {
+		return countries;
+	}
+
+	public void setCountries(List<Country> countries) {
+		this.countries = countries;
+	} 
 	
 	
 
