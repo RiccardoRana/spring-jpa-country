@@ -2,6 +2,8 @@ package com.jpaCountry.demo;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +17,7 @@ import com.jpaCountry.demo.repository.ContinentRepository;
 @RequestMapping("/continent")
 public class ContinentController {
 
-	
+	@Autowired
 	private ContinentRepository continentRepository;
 	
 	@GetMapping("/continents")

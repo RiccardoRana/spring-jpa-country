@@ -6,6 +6,6 @@ import com.jpaCountry.demo.model.Regione;
 
 public interface RegionRepository extends CrudRepository<Regione, Integer> {
 
-	public List<Regione> findByContinent(int continentId);
+	public List<Regione> findByContinent(Integer continentId);
 
 }

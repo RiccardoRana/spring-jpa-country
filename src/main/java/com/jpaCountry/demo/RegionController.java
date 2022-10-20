@@ -2,6 +2,8 @@ package com.jpaCountry.demo;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +16,7 @@ import com.jpaCountry.demo.repository.RegionRepository;
 public class RegionController {
 
 
-	
+	@Autowired
 	private RegionRepository regionRepository;
 
 	@GetMapping("/regions")
@@ -32,7 +34,7 @@ public class RegionController {
 	}
 
 	@GetMapping("/regionbycontinent")  //GET /country/regionbycontinent?continentId=1
-	public List<Regione> getCountryByRegion(@PathVariable(value = "continentId") int continentId) {
+	public List<Regione> getCountryByRegion(@PathVariable(value = "continentId") Integer continentId) {
 		if (continentId == 0)
 			return (List<Regione>)regionRepository.findAll();
 		else 

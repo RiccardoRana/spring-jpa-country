@@ -1,5 +1,6 @@
 package com.jpaCountry.demo.model;
 
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,20 +15,25 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
 @Entity
 @Table(name="regions")
 public class Regione {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Column(name="region_id")
+	private int id;
 	
 	@Column(name="name",nullable=true)
 	private String nameRegion;
 	
 	@ManyToOne
-	@JoinColumn(name="continent_id", nullable=true) //Foreign Key
-	@OrderBy("continent_id")
+	@JoinColumn(name="continent_id", nullable=false) //Foreign Key
+	@JsonBackReference
 	private Continent continent;
 	
 	@OneToMany(mappedBy="region")
@@ -38,7 +44,7 @@ public class Regione {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

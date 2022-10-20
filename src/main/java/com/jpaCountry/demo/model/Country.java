@@ -1,6 +1,7 @@
 package com.jpaCountry.demo.model;
 
-import java.util.Date;
+
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity 
 @Table(name="countries")
@@ -18,19 +21,22 @@ public class Country {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Column(name="country_id")
+	private int id;
 	@Column(nullable=true, unique=true)
 	private String country_code2;
 	@Column(nullable=true, unique=true)
 	private String country_code3;
 	
 	private String name;
-	private Date national_day;
-	@Column(nullable=true)
+	
+//	private Date national_day;
+	@Column(nullable=false)
 	private java.math.BigDecimal area;
 	
 	@ManyToOne 
-	@JoinColumn(name="region_id", nullable=true) //Foreign Key
+	@JoinColumn(name="region_id", nullable=false) //Foreign Key
+	@JsonBackReference
     private Regione region;
 	
 
@@ -67,13 +73,13 @@ public class Country {
 		this.name = name;
 	}
 
-	public Date getNational_day() {
-		return national_day;
-	}
-
-	public void setNational_day(Date national_day) {
-		this.national_day = national_day;
-	}
+//	public Date getNational_day() {
+//		return national_day;
+//	}
+//
+//	public void setNational_day(Date national_day) {
+//		this.national_day = national_day;
+//	}
 
 	public java.math.BigDecimal getArea() {
 		return area;

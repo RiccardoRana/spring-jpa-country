@@ -17,7 +17,7 @@ public class Continent {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int continent_id;
 	@Column(name="name",nullable=true)
 	private String nameContinent;
 	
@@ -25,12 +25,12 @@ public class Continent {
 	@OrderBy("region_id")
 	private List<Regione> regions;
 
-	public Integer getId() {
-		return id;
+	public int getId() {
+		return continent_id;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.continent_id = id;
 	}
 
 	public String getNameContinent() {
