@@ -54,7 +54,7 @@ public class CountryController {
 
 	// Nuova Nazione:
 	@PostMapping(value = "/newcountry/{regionId}") // POST /api/students
-	public ResponseEntity<Country> createStudent(@RequestParam(value="regionId") int regionId,@RequestBody Country country) {
+	public ResponseEntity<Country> createStudent(@PathVariable(value="regionId") int regionId,@RequestBody Country country) {
 		Optional<Regione> region = regionRepository.findById(regionId);
 		if (region.isPresent()) {
 			country.setRegion(region.get());
